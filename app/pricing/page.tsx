@@ -45,123 +45,118 @@ export default function PricingPage() {
       </section>
 
       {/* Pricing Cards */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-[#63C5EE] via-[#D8D8D8] to-[#33B86C] rounded-3xl p-12 shadow-lg border-2 border-[#23A6A0]">
+    <section className="py-16 md:py-20 bg-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="bg-gradient-to-br from-[#63C5EE] via-[#D8D8D8] to-[#33B86C] rounded-3xl p-6 sm:p-10 lg:p-12 shadow-lg border-2 border-[#23A6A0]">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10"
+      >
+        {[
+          {
+            name: 'Starter',
+            price: '$299',
+            period: '/month',
+            description: 'Perfect for small practices',
+            users: 'Up to 5 users',
+            features: [
+              'Up to 500 invoices/month',
+              'Basic analytics',
+              'Email support',
+              'Standard integrations',
+              'HIPAA compliant',
+            ],
+            cta: 'Start Free Trial',
+            highlighted: false,
+          },
+          {
+            name: 'Professional',
+            price: '$999',
+            period: '/month',
+            description: 'Best for growing providers',
+            users: 'Up to 25 users',
+            features: [
+              'Up to 5,000 invoices/month',
+              'Advanced analytics',
+              'Priority support',
+              'Custom integrations',
+              'HIPAA compliant',
+              'Denial management',
+              'Multi-location support',
+            ],
+            cta: 'Start Free Trial',
+            highlighted: true,
+          },
+          {
+            name: 'Enterprise',
+            price: 'Custom',
+            period: '/month',
+            description: 'For large healthcare systems',
+            users: 'Unlimited users',
+            features: [
+              'Unlimited invoices',
+              'Custom analytics',
+              '24/7 dedicated support',
+              'Custom development',
+              'HIPAA + compliance',
+              'Denial management',
+              'Multi-location support',
+              'Custom workflows',
+            ],
+            cta: 'Contact Sales',
+            highlighted: false,
+          },
+        ].map((plan, i) => (
           <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            key={i}
+            variants={itemVariants}
+            className={`rounded-2xl sm:rounded-3xl border-2 transition-all duration-300 ${
+              plan.highlighted
+                ? 'border-[#F7941E] bg-gradient-to-br from-white to-[#FFF9F0] shadow-2xl md:scale-105'
+                : 'border-[#D8D8D8] bg-white hover:shadow-xl'
+            }`}
           >
-            {[
-              {
-                name: 'Starter',
-                price: '$299',
-                period: '/month',
-                description: 'Perfect for small practices',
-                users: 'Up to 5 users',
-                features: [
-                  'Up to 500 invoices/month',
-                  'Basic analytics',
-                  'Email support',
-                  'Standard integrations',
-                  'HIPAA compliant',
-                ],
-                cta: 'Start Free Trial',
-                highlighted: false,
-              },
-              {
-                name: 'Professional',
-                price: '$999',
-                period: '/month',
-                description: 'Best for growing providers',
-                users: 'Up to 25 users',
-                features: [
-                  'Up to 5,000 invoices/month',
-                  'Advanced analytics',
-                  'Priority support',
-                  'Custom integrations',
-                  'HIPAA compliant',
-                  'Denial management',
-                  'Multi-location support',
-                ],
-                cta: 'Start Free Trial',
-                highlighted: true,
-              },
-              {
-                name: 'Enterprise',
-                price: 'Custom',
-                period: '/month',
-                description: 'For large healthcare systems',
-                users: 'Unlimited users',
-                features: [
-                  'Unlimited invoices',
-                  'Custom analytics',
-                  '24/7 dedicated support',
-                  'Custom development',
-                  'HIPAA + compliance',
-                  'Denial management',
-                  'Multi-location support',
-                  'Custom workflows',
-                ],
-                cta: 'Contact Sales',
-                highlighted: false,
-              },
-            ].map((plan, i) => (
-              <motion.div
-                key={i}
-                variants={itemVariants}
-                className={`rounded-3xl border-2 transition-all ${
+            <div className="p-5 sm:p-6 lg:p-8">
+              {plan.highlighted && (
+                <div className="bg-[#F7941E] text-white px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold mb-3 sm:mb-4 inline-block">
+                  Most Popular
+                </div>
+              )}
+              <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-1 sm:mb-2">{plan.name}</h3>
+              <p className="text-gray-600 text-xs sm:text-sm mb-4 sm:mb-6">{plan.description}</p>
+              <div className="mb-4 sm:mb-6">
+                <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">{plan.price}</span>
+                <span className="text-gray-600 text-base sm:text-lg">{plan.period}</span>
+              </div>
+              <p className="text-xs sm:text-sm text-gray-600 mb-5 sm:mb-6">{plan.users}</p>
+              <Link
+                href="/contact"
+                className={`block w-full py-2.5 sm:py-3 px-4 sm:px-6 rounded-full font-semibold text-center transition-all text-sm sm:text-base ${
                   plan.highlighted
-                    ? 'border-[#F7941E] bg-gradient-to-br from-white to-[#F8F8F8] shadow-2xl scale-105'
-                    : 'border-[#D8D8D8] bg-white hover:shadow-lg'
+                    ? 'bg-[#F7941E] hover:bg-[#E57F0F] text-white'
+                    : 'border-2 border-[#2A6DB3] text-[#2A6DB3] hover:bg-[#2A6DB3] hover:text-white'
                 }`}
               >
-                <div className="p-8">
-                  {plan.highlighted && (
-                    <div className="bg-[#F7941E] text-white px-4 py-1 rounded-full text-sm font-semibold mb-4 inline-block">
-                      Most Popular
-                    </div>
-                  )}
-                  <h3 className="text-2xl font-bold text-foreground mb-2">{plan.name}</h3>
-                  <p className="text-gray-600 mb-6 text-sm">{plan.description}</p>
-
-                  <div className="mb-6">
-                    <span className="text-4xl font-bold text-foreground">{plan.price}</span>
-                    <span className="text-gray-600">{plan.period}</span>
+                {plan.cta}
+              </Link>
+              <div className="mt-6 sm:mt-8 space-y-2 sm:space-y-3">
+                {plan.features.map((feature, j) => (
+                  <div key={j} className="flex items-center gap-2 sm:gap-3">
+                    <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
+                    <span className="text-xs sm:text-sm text-gray-600">{feature}</span>
                   </div>
-
-                  <p className="text-sm text-gray-600 mb-6">{plan.users}</p>
-
-                  <Link
-                    href="/contact"
-                    className={`block w-full py-3 px-4 rounded-full font-semibold text-center transition-all mb-8 ${
-                      plan.highlighted
-                        ? 'bg-[#F7941E] hover:bg-[#E57F0F] text-white'
-                        : 'border-2 border-[#2A6DB3] text-[#2A6DB3] hover:bg-[#2A6DB3] hover:text-white'
-                    }`}
-                  >
-                    {plan.cta}
-                  </Link>
-
-                  <div className="space-y-3">
-                    {plan.features.map((feature, j) => (
-                      <div key={j} className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                        <span className="text-sm text-gray-600">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                ))}
+              </div>
+            </div>
           </motion.div>
-          </div>
-        </div>
-      </section>
-
+        ))}
+      </motion.div>
+    </div>
+  </div>
+</section>
       {/* FAQ */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

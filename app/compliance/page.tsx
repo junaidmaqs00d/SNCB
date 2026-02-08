@@ -47,93 +47,96 @@ export default function CompliancePage() {
       </section>
 
       {/* Data Security Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-[#63C5EE] via-[#D8D8D8] to-[#33B86C] rounded-3xl p-12 shadow-lg border-2 border-[#23A6A0]">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#2A6DB3] to-[#23A6A0] bg-clip-text text-transparent">
-                Data Security Standards
-              </h2>
-            </motion.div>
+<section className="py-16 md:py-20 bg-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="bg-gradient-to-br from-[#63C5EE] via-[#D8D8D8] to-[#33B86C] rounded-3xl p-6 sm:p-10 lg:p-12 shadow-lg border-2 border-[#23A6A0]">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-center mb-10 sm:mb-16"
+      >
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#2A6DB3] to-[#23A6A0] bg-clip-text text-transparent">
+          Data Security Standards
+        </h2>
+      </motion.div>
 
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-8"
-            >
-              {[
-                {
-                  icon: Lock,
-                  title: 'HIPAA-Aware Workflows',
-                  features: [
-                    'All processes designed for healthcare',
-                    'Protected health information (PHI) handling',
-                    'Minimum necessary access principles',
-                    'Regular HIPAA training for all staff',
-                  ],
-                },
-                {
-                  icon: FileText,
-                  title: 'Secure Document Storage',
-                  features: [
-                    'Encrypted data storage',
-                    '256-bit encryption standard',
-                    'Secure file transmission',
-                    'Redundant backup systems',
-                  ],
-                },
-                {
-                  icon: Key,
-                  title: 'Access Control',
-                  features: [
-                    'Role-based access control (RBAC)',
-                    'Multi-factor authentication',
-                    'Audit logging for all access',
-                    'User permission management',
-                  ],
-                },
-                {
-                  icon: Eye,
-                  title: 'Confidentiality Agreements',
-                  features: [
-                    'All staff sign NDAs',
-                    'Strict confidentiality policies',
-                    'Employee background checks',
-                    'Compliance verification',
-                  ],
-                },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  variants={itemVariants}
-                  className="p-8 rounded-3xl bg-white shadow-lg border-2 border-[#D8D8D8]"
-                >
-                  <div className="inline-flex p-4 bg-gradient-to-br from-[#63C5EE]/20 to-[#23A6A0]/20 rounded-2xl mb-4">
-                    <item.icon className="w-8 h-8 text-[#2A6DB3]" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-[#2A6DB3] mb-4">{item.title}</h3>
-                  <ul className="space-y-3">
-                    {item.features.map((feature, j) => (
-                      <li key={j} className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-[#2A6DB3] flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-700">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"
+      >
+        {[
+          {
+            icon: Lock,
+            title: 'HIPAA-Aware Workflows',
+            features: [
+              'All processes designed for healthcare',
+              'Protected health information (PHI) handling',
+              'Minimum necessary access principles',
+              'Regular HIPAA training for all staff',
+            ],
+          },
+          {
+            icon: FileText,
+            title: 'Secure Document Storage',
+            features: [
+              'Encrypted data storage',
+              '256-bit encryption standard',
+              'Secure file transmission',
+              'Redundant backup systems',
+            ],
+          },
+          {
+            icon: Key,
+            title: 'Access Control',
+            features: [
+              'Role-based access control (RBAC)',
+              'Multi-factor authentication',
+              'Audit logging for all access',
+              'User permission management',
+            ],
+          },
+          {
+            icon: Eye,
+            title: 'Confidentiality Agreements',
+            features: [
+              'All staff sign NDAs',
+              'Strict confidentiality policies',
+              'Employee background checks',
+              'Compliance verification',
+            ],
+          },
+        ].map((item, i) => (
+          <motion.div
+            key={i}
+            variants={itemVariants}
+            className="p-5 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white shadow-lg border-2 border-[#D8D8D8]"
+          >
+            <div className="inline-flex p-3 sm:p-4 bg-gradient-to-br from-[#63C5EE]/20 to-[#23A6A0]/20 rounded-xl sm:rounded-2xl mb-4 sm:mb-5">
+              <item.icon className="w-7 h-7 sm:w-8 sm:h-8 text-[#2A6DB3]" />
+            </div>
+            <h3 className="text-xl sm:text-2xl font-bold text-[#2A6DB3] mb-3 sm:mb-4">
+              {item.title}
+            </h3>
+            <ul className="space-y-2.5 sm:space-y-3">
+              {item.features.map((feature, j) => (
+                <li key={j} className="flex items-start gap-2.5 sm:gap-3">
+                  <CheckCircle className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-[#2A6DB3] flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700 text-sm sm:text-base leading-relaxed">
+                    {feature}
+                  </span>
+                </li>
               ))}
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
+            </ul>
+          </motion.div>
+        ))}
+      </motion.div>
+    </div>
+  </div>
+</section>
       {/* Compliance Focus Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
