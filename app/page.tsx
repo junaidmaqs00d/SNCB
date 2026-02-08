@@ -60,8 +60,12 @@ function LogoCarousel() {
   return (
     <div className="w-full py-8 sm:py-12 bg-white/50 backdrop-blur rounded-2xl sm:rounded-3xl overflow-hidden">
       <div className="relative overflow-hidden">
-        <div className="marquee-scroll flex items-center gap-8 sm:gap-12 px-4">
-          {[...sectionLogos, ...sectionLogos, ...sectionLogos].map((logo, i) => (
+        <div
+          className="marquee-scroll flex items-center gap-8 sm:gap-12 px-4"
+          style={{ animationDuration: '18s' }}     // ← FASTER – adjust this value
+        >
+          {/* Two copies are usually enough when moving faster */}
+          {[...sectionLogos, ...sectionLogos].map((logo, i) => (
             <div key={i} className="flex-shrink-0 flex flex-col items-center gap-2 sm:gap-3">
               <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-blue-300 to-teal-200 rounded-xl sm:rounded-2xl flex items-center justify-center overflow-hidden shadow-md hover:shadow-lg transition-shadow">
                 <Image
@@ -72,8 +76,6 @@ function LogoCarousel() {
                   className="w-full h-full object-contain p-2 sm:p-3"
                 />
               </div>
-              {/* If you want labels → uncomment */}
-              {/* <p className="text-xs font-medium text-foreground text-center whitespace-nowrap">{logo.alt}</p> */}
             </div>
           ))}
         </div>
