@@ -151,8 +151,8 @@ export default function ContactPage() {
                 >
                   <h3 className="font-semibold mb-3 sm:mb-4">Business Hours</h3>
                   <p className="text-gray-600">
-                    Mon – Fri: 8:00 AM – 6:00 PM PST<br />
-                    Sat – Sun: 10:00 AM – 4:00 PM PST
+                    Mon – Fri: 8:00 AM – 6:00 PM EST<br />
+                    Sat – Sun: 10:00 AM – 4:00 PM EST
                   </p>
                 </motion.div>
               </motion.div>

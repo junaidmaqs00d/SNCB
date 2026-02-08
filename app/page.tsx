@@ -320,7 +320,7 @@ export default function Home() {
             >
               {[
                 { icon: Users, label: 'Agencies Supported', value: 150 },
-                { icon: DollarSign, label: 'Claims Processed Monthly', value: 50000 },
+                { icon: DollarSign, label: 'Claims Processed Monthly', value: 3000000 },
                 { icon: TrendingUp, label: 'Avg AR Reduction', value: 40 },
               ].map((stat, i) => (
                 <motion.div
