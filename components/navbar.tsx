@@ -19,10 +19,14 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent pt-4 px-4 sm:px-6 lg:px-8">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 pt-4 px-4 sm:px-6 lg:px-8 transition-colors duration-300
+      ${isOpen ? 'bg-white md:bg-transparent' : 'bg-transparent'}`}
+    >
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center h-16 bg-white bg-opacity-95 backdrop-blur-md rounded-full px-6 shadow-lg border border-white border-opacity-40">
-          {/* Logo and Brand Name */}
+          
+          {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <Image
               src="/logo.png"
@@ -32,10 +36,12 @@ export function Navbar() {
               priority
               className="h-10 w-auto"
             />
-            <span className="hidden sm:inline text-lg font-bold bg-gradient-to-r from-[#2A6DB3] to-[#23A6A0] bg-clip-text text-transparent">SNCB</span>
+            <span className="hidden sm:inline text-lg font-bold bg-gradient-to-r from-[#2A6DB3] to-[#23A6A0] bg-clip-text text-transparent">
+              SNCB
+            </span>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
@@ -48,7 +54,7 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* CTA Buttons */}
+          {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
             <Link
               href="/contact"
@@ -60,41 +66,38 @@ export function Navbar() {
               href="/contact"
               className="bg-[#F7941E] hover:bg-[#E57F0F] text-white px-6 py-1.5 rounded-full font-medium transition-all duration-200 hover:scale-105"
             >
-              Contact sales
+              Contact Sales
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Toggle */}
           <button
             className="md:hidden"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
-            {isOpen ? (
-              <X className="w-6 h-6 text-foreground" />
-            ) : (
-              <Menu className="w-6 h-6 text-foreground" />
-            )}
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden pb-4">
-            <div className="flex flex-col gap-4">
+          <div className="md:hidden mt-4 rounded-3xl bg-white shadow-xl border border-gray-200 p-6">
+            <div className="flex flex-col gap-5 text-center">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-foreground hover:text-primary transition-colors text-sm font-medium"
+                  className="text-foreground hover:text-primary text-base font-medium"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.label}
                 </Link>
               ))}
+
               <Link
                 href="/contact"
-                className="bg-accent hover:bg-orange-600 text-accent-foreground px-4 py-2 rounded-full font-medium transition-all text-center"
+                className="bg-[#F7941E] hover:bg-[#E57F0F] text-white px-4 py-2 rounded-full font-medium transition-all text-center"
                 onClick={() => setIsOpen(false)}
               >
                 Get Started
