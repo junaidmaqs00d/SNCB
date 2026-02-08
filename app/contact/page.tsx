@@ -56,7 +56,7 @@ export default function ContactPage() {
                 <h2 className="text-2xl md:text-3xl font-bold">Contact Information</h2>
 
                 {[
-                  { icon: Mail, label: 'Email', value: 'junaidmaqsood2211@gmail.com' },
+                  { icon: Mail, label: 'Email', value: 'info@swiftnc lear.com' },
                   { icon: Phone, label: 'Phone', value: '+1 (800) 555-0123' },
                   { icon: MapPin, label: 'Address', value: '123 Healthcare Blvd, San Francisco, CA' },
                 ].map((item, i) => (
