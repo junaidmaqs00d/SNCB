@@ -8,11 +8,11 @@ const _geist = Geist({ subsets: ['latin'] })
 const _geistMono = Geist_Mono({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'BillEase - Healthcare Billing Solutions',
+  title: 'SNC Billing',
   description: 'Streamline your revenue cycle management with secure, compliant billing solutions for healthcare providers',
   generator: 'v0.app',
   icons: {
-    icon: '/favicon.ico',
+    icon: '/logo.png',
   },
 }
 

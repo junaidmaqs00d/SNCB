@@ -171,7 +171,7 @@ export default function AboutPage() {
                 {
                   year: '2018',
                   title: 'Founded',
-                  description: 'BillEase launched with a mission to revolutionize healthcare billing',
+                  description: 'SNCB launched with a mission to revolutionize healthcare billing',
                 },
                 {
                   year: '2019',
