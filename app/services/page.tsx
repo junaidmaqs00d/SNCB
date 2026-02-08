@@ -35,7 +35,8 @@ export default function ServicesPage() {
     {
       icon: FileText,
       title: 'HR & Credentialing Support',
-      description: 'Complete credential management so your files are always audit-ready.',
+      description:
+        'Complete credential management so your files are always audit-ready.',
       features: [
         'Staff onboarding & offboarding workflows',
         'License and certification tracking',
@@ -77,7 +78,8 @@ export default function ServicesPage() {
     {
       icon: Users,
       title: 'Service Coordination Support',
-      description: 'Administrative support for your service coordination team.',
+      description:
+        'Administrative support for your service coordination team.',
       features: [
         'Case documentation formatting',
         'Service plan assistance',
@@ -91,7 +93,8 @@ export default function ServicesPage() {
     {
       icon: CheckCircle,
       title: 'Case Staffing Support',
-      description: 'Wraparound-specific support for case management.',
+      description:
+        'Wraparound-specific support for case management.',
       features: [
         'Meeting scheduling coordination',
         'Case notes preparation',
@@ -105,7 +108,8 @@ export default function ServicesPage() {
     {
       icon: Shield,
       title: 'Provider File Management',
-      description: 'Comprehensive roster compliance management with audit-ready files.',
+      description:
+        'Comprehensive roster compliance management with audit-ready files.',
       features: [
         'Centralized provider file storage',
         'License and certification tracking',
@@ -120,7 +124,8 @@ export default function ServicesPage() {
     {
       icon: Zap,
       title: 'Transportation Provider Support',
-      description: 'Specialized support for transportation provider networks.',
+      description:
+        'Specialized support for transportation provider networks.',
       features: [
         'Driver file management',
         'Vehicle documentation tracking',
@@ -137,66 +142,82 @@ export default function ServicesPage() {
     <>
       <Navbar />
 
-      {/* Header Section */}
-      <section className="bg-gradient-to-r from-[#2A6DB3] via-[#23A6A0] to-[#33B86C] text-white pt-32 pb-20 relative overflow-hidden">
+      {/* HEADER */}
+      <section className="bg-gradient-to-r from-[#2A6DB3] via-[#23A6A0] to-[#33B86C] text-white pt-28 md:pt-32 pb-16 md:pb-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-1/2 translate-y-1/2"></div>
+          <div className="absolute top-0 left-0 w-72 md:w-96 h-72 md:h-96 bg-white rounded-full -translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute bottom-0 right-0 w-72 md:w-96 h-72 md:h-96 bg-white rounded-full translate-x-1/2 translate-y-1/2" />
         </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#F7941E] via-white to-[#63C5EE] bg-clip-text text-transparent">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-[#F7941E] via-white to-[#63C5EE] bg-clip-text text-transparent">
               Complete Back-Office Services
             </h1>
-            <p className="text-xl opacity-90 max-w-2xl mx-auto">
-              End-to-end support for wraparound agencies, transportation providers, behavioral health contractors, and DFCS partners.
+            <p className="text-base sm:text-lg md:text-xl opacity-90 max-w-2xl mx-auto">
+              End-to-end support for wraparound agencies, transportation providers,
+              behavioral health contractors, and DFCS partners.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Main Services */}
-      <section className="py-20 bg-white">
+      {/* SERVICES */}
+      <section className="py-14 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="space-y-16"
+            className="space-y-12 md:space-y-16"
           >
             {services.map((service, i) => (
               <motion.div
                 key={i}
                 variants={itemVariants}
-                className="bg-gradient-to-br from-[#63C5EE] via-[#D8D8D8] to-[#33B86C] rounded-3xl p-12 shadow-lg border-2 border-[#23A6A0]"
+                className="bg-gradient-to-br from-[#63C5EE] via-[#D8D8D8] to-[#33B86C] rounded-3xl p-6 sm:p-8 md:p-12 shadow-lg border-2 border-[#23A6A0]"
               >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
+                  {/* LEFT */}
                   <div>
-                    <div className="inline-flex p-4 bg-white rounded-2xl mb-6">
-                      <service.icon className="w-10 h-10 text-[#2A6DB3]" />
+                    <div className="inline-flex p-3 sm:p-4 bg-white rounded-2xl mb-5">
+                      <service.icon className="w-8 h-8 sm:w-10 sm:h-10 text-[#2A6DB3]" />
                     </div>
-                    <h2 className="text-4xl font-bold mb-4 text-[#2A6DB3]">{service.title}</h2>
-                    <p className="text-xl text-gray-700 mb-8">{service.description}</p>
+
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 text-[#2A6DB3]">
+                      {service.title}
+                    </h2>
+
+                    <p className="text-sm sm:text-base md:text-xl text-gray-700 mb-6">
+                      {service.description}
+                    </p>
+
                     <Link
                       href="/contact"
-                      className="inline-flex items-center gap-2 bg-[#F7941E] hover:bg-[#E57F0F] text-white px-6 py-3 rounded-full font-semibold transition-all duration-200"
+                      className="inline-flex items-center gap-2 bg-[#F7941E] hover:bg-[#E57F0F] text-white px-5 py-3 rounded-full font-semibold transition-all duration-200"
                     >
                       Learn More <ArrowRight className="w-4 h-4" />
                     </Link>
                   </div>
 
-                  <div className="bg-white rounded-2xl p-8 shadow-lg">
-                    <h3 className="text-lg font-bold text-[#2A6DB3] mb-6">What's Included:</h3>
-                    <ul className="space-y-4">
+                  {/* RIGHT */}
+                  <div className="bg-white rounded-2xl p-5 sm:p-6 md:p-8 shadow-lg">
+                    <h3 className="text-base sm:text-lg font-bold text-[#2A6DB3] mb-4 sm:mb-6">
+                      What's Included:
+                    </h3>
+
+                    <ul className="space-y-3 sm:space-y-4">
                       {service.features.map((feature, j) => (
                         <li key={j} className="flex items-start gap-3">
                           <CheckCircle className="w-5 h-5 text-[#2A6DB3] flex-shrink-0 mt-0.5" />
-                          <span className="text-gray-700">{feature}</span>
+                          <span className="text-sm sm:text-base text-gray-700">
+                            {feature}
+                          </span>
                         </li>
                       ))}
                     </ul>
@@ -208,17 +229,17 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-20 bg-white">
+      {/* WHY CHOOSE US */}
+      <section className="py-14 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-[#63C5EE] via-[#D8D8D8] to-[#33B86C] rounded-3xl p-12 shadow-lg border-2 border-[#23A6A0]">
+          <div className="bg-gradient-to-br from-[#63C5EE] via-[#D8D8D8] to-[#33B86C] rounded-3xl p-6 sm:p-8 md:p-12 shadow-lg border-2 border-[#23A6A0]">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="text-center mb-10 md:mb-16"
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#2A6DB3] to-[#23A6A0] bg-clip-text text-transparent">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#2A6DB3] to-[#23A6A0] bg-clip-text text-transparent">
                 Why Choose Us
               </h2>
             </motion.div>
@@ -228,7 +249,7 @@ export default function ServicesPage() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
             >
               {[
                 { icon: Shield, title: 'Wraparound Specialization', desc: 'Deep expertise in the wraparound model' },
@@ -241,13 +262,17 @@ export default function ServicesPage() {
                 <motion.div
                   key={i}
                   variants={itemVariants}
-                  className="p-8 rounded-3xl bg-white shadow-lg border-2 border-[#D8D8D8]"
+                  className="p-6 md:p-8 rounded-3xl bg-white shadow-lg border-2 border-[#D8D8D8]"
                 >
                   <div className="inline-flex p-4 bg-gradient-to-br from-[#63C5EE]/20 to-[#23A6A0]/20 rounded-2xl mb-4">
-                    <item.icon className="w-8 h-8 text-[#2A6DB3]" />
+                    <item.icon className="w-7 h-7 text-[#2A6DB3]" />
                   </div>
-                  <h3 className="text-lg font-semibold text-[#2A6DB3] mb-2">{item.title}</h3>
-                  <p className="text-gray-600">{item.desc}</p>
+                  <h3 className="text-lg font-semibold text-[#2A6DB3] mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-gray-600">
+                    {item.desc}
+                  </p>
                 </motion.div>
               ))}
             </motion.div>
@@ -256,26 +281,27 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-[#2A6DB3] via-[#23A6A0] to-[#33B86C] text-white relative overflow-hidden">
+      <section className="py-16 md:py-20 bg-gradient-to-r from-[#2A6DB3] via-[#23A6A0] to-[#33B86C] text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-1/2 translate-y-1/2"></div>
+          <div className="absolute top-0 left-0 w-72 md:w-96 h-72 md:h-96 bg-white rounded-full -translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute bottom-0 right-0 w-72 md:w-96 h-72 md:h-96 bg-white rounded-full translate-x-1/2 translate-y-1/2" />
         </div>
+
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[#F7941E] via-white to-[#63C5EE] bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 bg-gradient-to-r from-[#F7941E] via-white to-[#63C5EE] bg-clip-text text-transparent">
               Ready to Transform Your Operations?
             </h2>
-            <p className="text-xl mb-8 opacity-90">
+            <p className="text-base sm:text-lg md:text-xl mb-8 opacity-90">
               See how we can take the administrative burden off your team.
             </p>
             <Link
               href="/contact"
-              className="bg-white hover:bg-[#F8F8F8] text-[#2A6DB3] px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 hover:scale-105 inline-block"
+              className="bg-white hover:bg-[#F8F8F8] text-[#2A6DB3] px-7 py-4 rounded-full font-semibold text-lg transition-all duration-200 hover:scale-105 inline-block"
             >
               Schedule a Demo
             </Link>
