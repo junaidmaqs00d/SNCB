@@ -49,12 +49,11 @@ function CountUp({ target, duration = 2000 }: { target: number; duration?: numbe
 
 function LogoCarousel() {
   const sectionLogos = [
-    { src: '/logo1.webp', alt: 'Partner 1' },
-    { src: '/logo2.webp', alt: 'Partner 2' },
-    { src: '/logo3.webp', alt: 'Partner 3' },
-    { src: '/logo4.webp', alt: 'Partner 4' },
-    { src: '/logo5.webp', alt: 'Partner 5' },
-    { src: '/logo6.webp', alt: 'Partner 6' },
+    { src: '/1st logo.jpg', alt: 'Partner 1' },
+    { src: '/2nd logo.jpg', alt: 'Partner 2' },
+    { src: '/3rd logo.jpg', alt: 'Partner 3' },
+    { src: '/4th logo.jpg', alt: 'Partner 4' },
+    { src: '/5th logo.jpg', alt: 'Partner 5' },
   ]
 
   return (
@@ -73,7 +72,7 @@ function LogoCarousel() {
                   alt={logo.alt}
                   width={96}
                   height={96}
-                  className="w-full h-full object-contain p-2 sm:p-3"
+                  className="w-full h-full object-contain p-2 sm:p-3 rounded-xl sm:rounded-2xl"
                 />
               </div>
             </div>

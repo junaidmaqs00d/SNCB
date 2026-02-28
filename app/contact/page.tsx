@@ -1,4 +1,5 @@
 'use client'
+
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { motion } from 'framer-motion'
@@ -70,6 +71,7 @@ export default function ContactPage() {
           <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-1/2 -translate-y-1/2" />
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-1/2 translate-y-1/2" />
         </div>
+
         <div className="max-w-7xl mx-auto px-4 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -91,6 +93,7 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-br from-[#63C5EE] via-[#D8D8D8] to-[#33B86C] rounded-3xl p-6 sm:p-10 lg:p-12 shadow-lg border-2 border-[#23A6A0]">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
+
               {/* ========= CONTACT INFO ========= */}
               <motion.div
                 variants={containerVariants}
@@ -125,25 +128,30 @@ export default function ContactPage() {
                     value: '123 Healthcare Blvd, San Francisco, CA 94105',
                     href: '#',
                   },
-                ].map((item, i) => (
-                  <motion.a
-                    key={i}
-                    variants={itemVariants}
-                    href={item.href}
-                    className="flex items-start sm:items-center gap-4 sm:gap-6 p-4 sm:p-6 bg-card rounded-lg border border-border hover:shadow-lg transition-shadow group"
-                  >
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:bg-opacity-20">
-                      <item.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
-                    </div>
+                ].map((item, i) => {
+                  const Icon = item.icon
+                  return (
+                    <motion.a
+                      key={i}
+                      variants={itemVariants}
+                      href={item.href}
+                      className="flex items-start sm:items-center gap-4 sm:gap-6 p-4 sm:p-6 bg-card rounded-lg border border-border hover:shadow-lg transition-shadow group"
+                    >
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#2A6DB3] rounded-lg flex items-center justify-center flex-shrink-0">
+  <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                      </div>
 
-                    <div className="min-w-0 flex-1">
-                      <h3 className="font-semibold text-base sm:text-lg mb-0.5 sm:mb-1">{item.label}</h3>
-                      <p className="text-gray-600 text-sm sm:text-base break-words hyphens-auto">
-                        {item.value}
-                      </p>
-                    </div>
-                  </motion.a>
-                ))}
+                      <div className="min-w-0 flex-1">
+                        <h3 className="font-semibold text-base sm:text-lg mb-0.5 sm:mb-1">
+                          {item.label}
+                        </h3>
+                        <p className="text-gray-600 text-sm sm:text-base break-words">
+                          {item.value}
+                        </p>
+                      </div>
+                    </motion.a>
+                  )
+                })}
 
                 <motion.div
                   variants={itemVariants}
@@ -224,6 +232,7 @@ export default function ContactPage() {
                   We respect your privacy. Your information will only be used to respond to your inquiry.
                 </p>
               </motion.div>
+
             </div>
           </div>
         </div>

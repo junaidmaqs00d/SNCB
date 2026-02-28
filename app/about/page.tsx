@@ -24,15 +24,17 @@ export default function AboutPage() {
     <>
       <Navbar />
 
-      {/* Header Section */}
+      {/* ================= HEADER ================= */}
       <section className="bg-gradient-to-r from-[#2A6DB3] via-[#23A6A0] to-[#33B86C] text-white pt-32 pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#F7941E] via-white to-[#63C5EE] bg-clip-text text-transparent">About Us</h1>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#F7941E] via-white to-[#63C5EE] bg-clip-text text-transparent">
+              About Us
+            </h1>
             <p className="text-xl opacity-90 max-w-2xl mx-auto">
               We run the back office so wraparound agencies can focus on what matters—helping clients and families succeed.
             </p>
@@ -40,9 +42,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission & Vision */}
+      {/* ================= MISSION & VISION ================= */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4">
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -55,19 +57,19 @@ export default function AboutPage() {
                 icon: Target,
                 title: 'Our Mission',
                 description:
-                  'We are committed to transforming wraparound agencies by providing world-class back-office support, enabling leaders to focus on direct services and client outcomes.',
+                  'We are committed to transforming wraparound agencies by providing world-class back-office support.',
               },
               {
                 icon: Lightbulb,
                 title: 'Our Vision',
                 description:
-                  'To be the trusted back-office partner for wraparound agencies across the U.S., known for excellence in compliance, efficiency, and industry expertise.',
+                  'To be the trusted back-office partner for wraparound agencies across the U.S.',
               },
               {
                 icon: Users,
                 title: 'Our Values',
                 description:
-                  'Industry specialization, integrity, excellence, and partnership guide everything we do. Your success is our success.',
+                  'Industry specialization, integrity, excellence, and partnership guide everything we do.',
               },
             ].map((item, i) => (
               <motion.div
@@ -78,27 +80,34 @@ export default function AboutPage() {
                 <div className="inline-flex p-4 bg-white rounded-2xl mb-6">
                   <item.icon className="w-10 h-10 text-[#2A6DB3]" />
                 </div>
-                <h3 className="text-2xl font-bold text-[#2A6DB3] mb-4">{item.title}</h3>
-                <p className="text-gray-700 text-lg">{item.description}</p>
+                <h3 className="text-2xl font-bold text-[#2A6DB3] mb-4">
+                  {item.title}
+                </h3>
+                <p className="text-gray-700 text-lg">
+                  {item.description}
+                </p>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Team */}
+      {/* ================= NEW PROVEN RESULTS SECTION ================= */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="bg-gradient-to-br from-[#63C5EE] via-[#D8D8D8] to-[#33B86C] rounded-3xl p-12 shadow-lg border-2 border-[#23A6A0]">
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#2A6DB3] to-[#23A6A0] bg-clip-text text-transparent">Our Team</h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Experienced healthcare and technology professionals dedicated to your success
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#2A6DB3] to-[#23A6A0] bg-clip-text text-transparent">
+                Proven Results
+              </h2>
+              <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+                We don’t just support agencies — we transform them financially.
               </p>
             </motion.div>
 
@@ -107,114 +116,64 @@ export default function AboutPage() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-8"
+              className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16"
             >
               {[
-                {
-                  name: 'Ayan Khatak',
-                  role: 'CEO & Co-Founder',
-                  bio: 'Former healthcare CTO with 8+ years in revenue cycle management',
-                },
-                {
-                  name: 'Rabail',
-                  role: 'COO & Co-Founder',
-                  bio: 'Healthcare operations expert and compliance specialist',
-                },
-                {
-                  name: 'Naba Nadeem',
-                  role: 'CTO & Co-Founder',
-                  bio: 'Full-stack engineer passionate about healthcare technology',
-                },
-              ].map((member, i) => (
+                { value: '$4M+', label: 'Revenue Generated from $0' },
+                { value: '98%', label: 'Loss Reduction' },
+                { value: '60%+', label: 'AR Recovery Improvement' },
+                { value: '500K+', label: 'Claims Processed' },
+              ].map((stat, i) => (
                 <motion.div
                   key={i}
                   variants={itemVariants}
-                  className="p-8 bg-white rounded-3xl border-2 border-[#D8D8D8] text-center hover:shadow-lg transition-shadow"
+                  className="bg-white p-8 rounded-2xl text-center shadow-lg border"
                 >
-                  <div className="w-24 h-24 bg-gradient-to-br from-[#2A6DB3] to-[#23A6A0] rounded-full mx-auto mb-4 flex items-center justify-center text-3xl font-bold text-white">
-                    {member.name
-                      .split(' ')
-                      .map((n) => n[0])
-                      .join('')}
-                  </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">{member.name}</h3>
-                  <p className="text-primary font-semibold mb-3">{member.role}</p>
-                  <p className="text-gray-600">{member.bio}</p>
+                  <h3 className="text-4xl font-bold text-[#2A6DB3] mb-2">
+                    {stat.value}
+                  </h3>
+                  <p className="text-gray-600 font-medium">
+                    {stat.label}
+                  </p>
                 </motion.div>
               ))}
             </motion.div>
-          </div>
-        </div>
-      </section>
 
-      {/* Timeline */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-[#63C5EE] via-[#D8D8D8] to-[#33B86C] rounded-3xl p-12 shadow-lg border-2 border-[#23A6A0]">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="bg-white p-10 rounded-3xl shadow-xl border-2 border-[#23A6A0]"
             >
-              <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-[#2A6DB3] to-[#23A6A0] bg-clip-text text-transparent">Our Journey</h2>
+              <h3 className="text-3xl font-bold text-[#2A6DB3] mb-6">
+                Real Client Transformation
+              </h3>
+
+              <p className="text-lg text-gray-700 mb-4">
+                One struggling wraparound agency approached us with financial instability,
+                disorganized AR, and heavy losses.
+              </p>
+
+              <p className="text-lg text-gray-700 mb-4">
+                We rebuilt their revenue systems, reduced denials, cleaned AR, and created structured financial workflows.
+              </p>
+
+              <p className="text-lg text-gray-700 font-semibold">
+                Within 18 months, we scaled them from 
+                <span className="text-[#2A6DB3]"> $0 to $4M+ revenue</span> 
+                and reduced losses by 
+                <span className="text-[#2A6DB3]"> 98%</span>.
+              </p>
             </motion.div>
 
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="space-y-8"
-            >
-              {[
-                {
-                  year: '2018',
-                  title: 'Founded',
-                  description: 'SNCB launched with a mission to revolutionize healthcare billing',
-                },
-                {
-                  year: '2019',
-                  title: 'First 100 Providers',
-                  description: 'Reached 100 healthcare organizations using our platform',
-                },
-                {
-                  year: '2021',
-                  title: 'Series A Funding',
-                  description: 'Secured $10M in Series A funding to accelerate growth',
-                },
-                {
-                  year: '2023',
-                  title: '500 Provider Milestone',
-                  description: 'Now serving 500+ healthcare providers across the nation',
-                },
-                {
-                  year: '2024',
-                  title: 'International Expansion',
-                  description: 'Launched multi-currency support and international billing features',
-                },
-              ].map((event, i) => (
-                <motion.div
-                  key={i}
-                  variants={itemVariants}
-                  className="flex gap-8"
-                >
-                  <div className="flex flex-col items-center">
-                    <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold">
-                      {event.year.slice(-2)}
-                    </div>
-                    {i < 4 && <div className="w-1 h-24 bg-primary mt-4" />}
-                  </div>
-                  <div className="pb-8">
-                    <h3 className="text-2xl font-bold text-foreground mb-2">{event.title}</h3>
-                    <p className="text-gray-600 text-lg">{event.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
           </div>
         </div>
       </section>
+
+      {/* ================= YOUR ORIGINAL TEAM SECTION (UNCHANGED) ================= */}
+      {/* KEEPING YOUR TEAM + TIMELINE BELOW EXACTLY SAME */}
+{/* Team */} <section className="py-20 bg-white"> <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> <div className="bg-gradient-to-br from-[#63C5EE] via-[#D8D8D8] to-[#33B86C] rounded-3xl p-12 shadow-lg border-2 border-[#23A6A0]"> <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16" > <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#2A6DB3] to-[#23A6A0] bg-clip-text text-transparent">Our Team</h2> <p className="text-xl text-gray-600 max-w-2xl mx-auto"> Experienced healthcare and technology professionals dedicated to your success </p> </motion.div> <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-3 gap-8" > {[ { name: 'Ayan Khatak', role: 'CEO & Co-Founder', bio: 'Former healthcare CTO with 8+ years in revenue cycle management', }, { name: 'Rabail', role: 'COO & Co-Founder', bio: 'Healthcare operations expert and compliance specialist', }, { name: 'Naba Nadeem', role: 'CTO & Co-Founder', bio: 'Full-stack engineer passionate about healthcare technology', }, ].map((member, i) => ( <motion.div key={i} variants={itemVariants} className="p-8 bg-white rounded-3xl border-2 border-[#D8D8D8] text-center hover:shadow-lg transition-shadow" > <div className="w-24 h-24 bg-gradient-to-br from-[#2A6DB3] to-[#23A6A0] rounded-full mx-auto mb-4 flex items-center justify-center text-3xl font-bold text-white"> {member.name .split(' ') .map((n) => n[0]) .join('')} </div> <h3 className="text-xl font-semibold text-foreground mb-2">{member.name}</h3> <p className="text-primary font-semibold mb-3">{member.role}</p> <p className="text-gray-600">{member.bio}</p> </motion.div> ))} </motion.div> </div> </div> </section> {/* Timeline */} <section className="py-20 bg-white"> <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"> <div className="bg-gradient-to-br from-[#63C5EE] via-[#D8D8D8] to-[#33B86C] rounded-3xl p-12 shadow-lg border-2 border-[#23A6A0]"> <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16" > <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-[#2A6DB3] to-[#23A6A0] bg-clip-text text-transparent">Our Journey</h2> </motion.div> <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="space-y-8" > {[ { year: '2018', title: 'Founded', description: 'SNCB launched with a mission to revolutionize healthcare billing', }, { year: '2019', title: 'First 100 Providers', description: 'Reached 100 healthcare organizations using our platform', }, { year: '2021', title: 'Series A Funding', description: 'Secured $10M in Series A funding to accelerate growth', }, { year: '2023', title: '500 Provider Milestone', description: 'Now serving 500+ healthcare providers across the nation', }, { year: '2024', title: 'International Expansion', description: 'Launched multi-currency support and international billing features', }, ].map((event, i) => ( <motion.div key={i} variants={itemVariants} className="flex gap-8" > <div className="flex flex-col items-center"> <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold"> {event.year.slice(-2)} </div> {i < 4 && <div className="w-1 h-24 bg-primary mt-4" />} </div> <div className="pb-8"> <h3 className="text-2xl font-bold text-foreground mb-2">{event.title}</h3> <p className="text-gray-600 text-lg">{event.description}</p> </div> </motion.div> ))} </motion.div> </div> </div> </section>
+      {/* (Your existing Team + Timeline sections continue here unchanged) */}
 
       <Footer />
     </>
