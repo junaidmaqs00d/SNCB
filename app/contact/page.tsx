@@ -113,14 +113,14 @@ export default function ContactPage() {
                   {
                     icon: Mail,
                     label: 'Email',
-                    value: 'info@swiftncclear.com',
-                    href: 'mailto:info@swiftncclear.com',
+                    value: 'Admin@swiftnclearbilling.biz',
+                    href: 'mailto:Admin@swiftnclearbilling.biz',
                   },
                   {
                     icon: Phone,
                     label: 'Phone',
-                    value: '+1 (800) 555-0123',
-                    href: 'tel:+18005550123',
+                    value: '+1 406-308-7467',
+                    href: 'tel:+14063087467',
                   },
                   {
                     icon: MapPin,
