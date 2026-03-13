@@ -39,27 +39,59 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
 
-  const onSubmit = async (data: ContactFormData) => {
-    setIsSubmitting(true)
-    try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      })
-      if (response.ok) {
-        setSubmitSuccess(true)
-        reset()
-        setTimeout(() => setSubmitSuccess(false), 5000)
-      } else {
-        throw new Error('Failed to send email')
-      }
-    } catch (error) {
-      console.error('Form submission error:', error)
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
+  // const onSubmit = async (data: ContactFormData) => {
+  //   setIsSubmitting(true)
+  //   try {
+  //     const response = await fetch('/api/send-email', {
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify(data),
+  //     })
+  //     if (response.ok) {
+  //       setSubmitSuccess(true)
+  //       reset()
+  //       setTimeout(() => setSubmitSuccess(false), 5000)
+  //     } else {
+  //       throw new Error('Failed to send email')
+  //     }
+  //   } catch (error) {
+  //     console.error('Form submission error:', error)
+  //   } finally {
+  //     setIsSubmitting(false)
+  //   }
+  // }
+
+  const onSubmit = (data: ContactFormData) => {
+  setIsSubmitting(true)
+
+  const phoneNumber = "923205555476"
+
+  const message = `
+New Website Inquiry
+
+Name: ${data.name}
+Email: ${data.email}
+Phone: ${data.phone}
+Company: ${data.company}
+
+Message:
+${data.message}
+  `
+
+  const encodedMessage = encodeURIComponent(message)
+
+  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`
+
+  window.open(whatsappURL, "_blank")
+
+  setSubmitSuccess(true)
+  reset()
+
+  setTimeout(() => {
+    setSubmitSuccess(false)
+    setIsSubmitting(false)
+  }, 3000)
+}
 
   return (
     <>

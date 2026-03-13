@@ -53,7 +53,8 @@ function LogoCarousel() {
     { src: '/2nd logo.jpg', alt: 'Partner 2' },
     { src: '/3rd logo.jpg', alt: 'Partner 3' },
     { src: '/4th logo.jpg', alt: 'Partner 4' },
-    { src: '/5th logo.jpg', alt: 'Partner 5' },
+      { src: '/image(3).jpg', alt: 'Partner 5' },
+    { src: '/image(4).jpg', alt: 'Partner 6' },
   ]
 
   return (
@@ -108,8 +109,7 @@ export default function Home() {
             <div className="inline-block mb-5 sm:mb-6 px-5 sm:px-6 py-2 sm:py-3 bg-white/20 backdrop-blur-md border border-white/30 rounded-full">
               <p className="text-xs sm:text-sm text-white font-semibold">Trusted by Wraparound Agencies Nationwide</p>
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-5 sm:mb-6 leading-tight bg-gradient-to-r from-[#F7941E] via-white to-[#63C5EE] bg-clip-text text-transparent">
-              We Run the Back Office.<br className="sm:hidden" /> You Run the Services.
+<h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-5 sm:mb-6 leading-tight bg-gradient-to-r from-[#F7941E] via-white to-[#63C5EE] bg-clip-text text-transparent drop-shadow-lg">              We Run the Back Office.<br className="sm:hidden" /> You Run the Services.
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl text-white opacity-90 mb-8 max-w-3xl mx-auto leading-relaxed">
               Back-office support for wraparound agencies, transportation providers, behavioral health, and DFCS contractors across the U.S.
@@ -319,8 +319,8 @@ export default function Home() {
             >
               {[
                 { icon: Users, label: 'Agencies Supported', value: 150 },
-                { icon: DollarSign, label: 'Claims Processed Monthly', value: 3000000 },
-                { icon: TrendingUp, label: 'Avg AR Reduction', value: 40 },
+                { icon: DollarSign, label: 'Claims Processed Monthly', value: 6000000 },
+                { icon: TrendingUp, label: 'Avg AR Reduction', value: 97 },
               ].map((stat, i) => (
                 <motion.div
                   key={i}
@@ -365,7 +365,7 @@ export default function Home() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8"
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"
             >
               {[
                 {
@@ -378,11 +378,11 @@ export default function Home() {
                   role: "Operations Manager, Behavioral Health",
                   quote: "The credentialing and compliance support is exactly what we needed for DFCS environments.",
                 },
-                {
-                  name: "Lisa Chen",
-                  role: "Finance Director, Transportation Network",
-                  quote: "Outstanding support for our unique compliance needs. We passed our audit with zero findings.",
-                },
+                // {
+                //   name: "Lisa Chen",
+                //   role: "Finance Director, Transportation Network",
+                //   quote: "Outstanding support for our unique compliance needs. We passed our audit with zero findings.",
+                // },
               ].map((testimonial, i) => (
                 <motion.div
                   key={i}
@@ -426,7 +426,7 @@ export default function Home() {
               Ready to Reduce Admin Overhead?
             </h2>
             <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 opacity-90 max-w-3xl mx-auto">
-              Join 150+ wraparound agencies nationwide who trust us to run their back office so they can focus on services.
+              Join + wraparound agencies nationwide who trust us to run their back office so they can focus on services.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
               <Link

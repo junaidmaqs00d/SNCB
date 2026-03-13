@@ -53,7 +53,7 @@ export default function PricingPage() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10"
+        className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 lg:gap-10"
       >
         {[
           {
@@ -72,24 +72,24 @@ export default function PricingPage() {
             cta: 'Start Free Trial',
             highlighted: false,
           },
-          {
-            name: 'Professional',
-            price: '$999',
-            period: '/month',
-            description: 'Best for growing providers',
-            users: 'Up to 25 users',
-            features: [
-              'Up to 5,000 invoices/month',
-              'Advanced analytics',
-              'Priority support',
-              'Custom integrations',
-              'HIPAA compliant',
-              'Denial management',
-              'Multi-location support',
-            ],
-            cta: 'Start Free Trial',
-            highlighted: true,
-          },
+          // {
+          //   name: 'Professional',
+          //   price: '$999',
+          //   period: '/month',
+          //   description: 'Best for growing providers',
+          //   users: 'Up to 25 users',
+          //   features: [
+          //     'Up to 5,000 invoices/month',
+          //     'Advanced analytics',
+          //     'Priority support',
+          //     'Custom integrations',
+          //     'HIPAA compliant',
+          //     'Denial management',
+          //     'Multi-location support',
+          //   ],
+          //   cta: 'Start Free Trial',
+          //   highlighted: true,
+          // },
           {
             name: 'Enterprise',
             price: 'Custom',
@@ -188,7 +188,7 @@ export default function PricingPage() {
               },
               {
                 q: 'What payment methods do you accept?',
-                a: 'We accept all major credit cards, ACH transfers, and wire transfers for enterprise customers.',
+                a: 'We accept payments through Remitly, Wise, all major credit cards, ACH transfers, and wire transfers for enterprise customers.',
               },
               {
                 q: 'Do you offer volume discounts?',
