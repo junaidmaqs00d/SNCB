@@ -74,7 +74,12 @@ export default function HowItWorksPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#F7941E] via-white to-[#63C5EE] bg-clip-text text-transparent">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-5 
+sm:mb-6 leading-tight bg-gradient-to-r from-[#F7941E] via-white to-[#63C5EE]
+ bg-gradient-to-r from-[#E67E22] via-[#FFD9A8] to-[#4FAEDB] 
+bg-clip-text text-transparent 
+drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)] 
+[webkit-text-stroke:1px_rgba(0,0,0,0.25)]">
               How It Works
             </h1>
             <p className="text-xl opacity-90 max-w-2xl mx-auto">
