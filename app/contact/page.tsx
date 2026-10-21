@@ -13,6 +13,7 @@ interface ContactFormData {
   phone: string
   company: string
   message: string
+  botcheck?: boolean
 }
 
 const containerVariants = {
@@ -38,60 +39,58 @@ export default function ContactPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
+  const [submitError, setSubmitError] = useState('')
 
-  // const onSubmit = async (data: ContactFormData) => {
-  //   setIsSubmitting(true)
-  //   try {
-  //     const response = await fetch('/api/send-email', {
-  //       method: 'POST',
-  //       headers: { 'Content-Type': 'application/json' },
-  //       body: JSON.stringify(data),
-  //     })
-  //     if (response.ok) {
-  //       setSubmitSuccess(true)
-  //       reset()
-  //       setTimeout(() => setSubmitSuccess(false), 5000)
-  //     } else {
-  //       throw new Error('Failed to send email')
-  //     }
-  //   } catch (error) {
-  //     console.error('Form submission error:', error)
-  //   } finally {
-  //     setIsSubmitting(false)
-  //   }
-  // }
+  // Sends the form straight to your inbox through Web3Forms (no Outlook / WhatsApp popup).
+  // The access key is tied to the email address you registered it with at web3forms.com.
+  // It is safe to keep in front-end code — it can only send mail TO you.
+  const WEB3FORMS_ACCESS_KEY =
+    process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '5ca28016-df57-4fd5-90ca-078b19d96f34'
 
-  const onSubmit = (data: ContactFormData) => {
-  setIsSubmitting(true)
-
-  const phoneNumber = "923205555476"
-
-  const message = `
-New Website Inquiry
-
-Name: ${data.name}
-Email: ${data.email}
-Phone: ${data.phone}
-Company: ${data.company}
-
-Message:
-${data.message}
-  `
-
-  const encodedMessage = encodeURIComponent(message)
-
-  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`
-
-  window.open(whatsappURL, "_blank")
-
-  setSubmitSuccess(true)
-  reset()
-
-  setTimeout(() => {
+  const onSubmit = async (data: ContactFormData) => {
+    setIsSubmitting(true)
+    setSubmitError('')
     setSubmitSuccess(false)
-    setIsSubmitting(false)
-  }, 3000)
-}
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `New Website Inquiry: ${data.name}${data.company ? ` (${data.company})` : ''}`,
+          from_name: 'SNCB Website',
+          replyto: data.email,
+          botcheck: data.botcheck ?? false,
+          Name: data.name,
+          Email: data.email,
+          Phone: data.phone || 'Not provided',
+          Company: data.company || 'Not provided',
+          Message: data.message,
+        }),
+      })
+
+      const result = await response.json().catch(() => ({}))
+
+      if (response.ok && result.success !== false) {
+        setSubmitSuccess(true)
+        reset()
+        setTimeout(() => setSubmitSuccess(false), 6000)
+      } else {
+        throw new Error(result.message || 'Failed to send message')
+      }
+    } catch (error) {
+      console.error('Form submission error:', error)
+      setSubmitError(
+        'Sorry, your message could not be sent. Please try again or email us at Admin@swiftnclearbilling.biz.'
+      )
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <>
@@ -162,8 +161,8 @@ drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)]
                   {
                     icon: MapPin,
                     label: 'Address',
-                    value: '123 Healthcare Blvd, San Francisco, CA 94105',
-                    href: '#',
+                    value: 'Atlanta, Georgia, USA',
+                    href: 'https://www.google.com/maps/place/Atlanta,+GA',
                   },
                 ].map((item, i) => {
                   const Icon = item.icon
@@ -215,11 +214,26 @@ drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)]
 
                 {submitSuccess && (
                   <div className="mb-6 p-4 bg-green-100 border border-green-300 rounded-lg text-green-800 text-sm sm:text-base">
-                    Thank you! We'll get back to you shortly.
+                    Thank you! Your message has been sent. We'll get back to you shortly.
+                  </div>
+                )}
+
+                {submitError && (
+                  <div className="mb-6 p-4 bg-red-100 border border-red-300 rounded-lg text-red-800 text-sm sm:text-base">
+                    {submitError}
                   </div>
                 )}
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 sm:space-y-6">
+                  {/* Hidden spam trap — real visitors never see or tick this */}
+                  <input
+                    type="checkbox"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    className="hidden"
+                    style={{ display: 'none' }}
+                    {...register('botcheck')}
+                  />
                   <input
                     placeholder="Full Name"
                     {...register('name', { required: 'Name is required' })}
@@ -229,7 +243,14 @@ drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)]
 
                   <input
                     placeholder="Email Address"
-                    {...register('email', { required: 'Email is required' })}
+                    type="email"
+                    {...register('email', {
+                      required: 'Email is required',
+                      pattern: {
+                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                        message: 'Please enter a valid email address',
+                      },
+                    })}
                     className="w-full px-4 py-3 border rounded-lg text-sm sm:text-base"
                   />
                   {errors.email && <p className="text-red-500 text-xs sm:text-sm">{errors.email.message}</p>}
